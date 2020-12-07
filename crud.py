@@ -68,7 +68,7 @@ lista_produtos = []
 id_numerador = 0
 print('Cadastro de Produto.')
 while True:
-    op = input('C - Cadastrar produto / L - Listar produto / L - Editar produto / L - Excluir produto / S - Sair: ').lower()
+    op = input('C - Cadastrar produto / L - Listar produto / E - Editar produto / R - Excluir produto / S - Sair: ').lower()
     if op == 'c':
         produto = Produto()
         produto.set_nome(cadastro('nome'))
