@@ -5,8 +5,13 @@ from categoria_controller import get_categoria_by_id
 
 lista_produtos_categorias = []
 
-def cadastro_produto_categoria(lista_categorias : list, produto_id : int):
+def cadastro_produto_categoria(lista_categorias : list, produto_id : int, edicao = False):
     lista_ids = []
+
+    # if edicao:
+    #     lista_remover = [e for e in lista_produtos_categorias if e.id_produto == produto_id]
+    #     lista_produtos_categorias = set(lista_produtos_categorias).difference(lista_remover)
+
     if not lista_categorias:
         print('Ainda nao existe nenhuma categoria cadastrada.')
     else:

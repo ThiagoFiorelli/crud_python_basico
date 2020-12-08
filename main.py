@@ -1,6 +1,7 @@
 from produto_controller import *
 from categoria_controller import *
 from produto_categoria_controller import *
+from categoria_subcategoria_controller import *
 from Categoria import Categoria
 from Subcategoria import Subcategoria
    
@@ -29,6 +30,7 @@ while True:
                     produto = get_produto_by_id(id_produto_edicao)
                     if isinstance(produto,Produto):
                         editar_produto(produto)
+                        cadastro_produto_categoria(lista_categorias, id_produto_edicao, True)
                     else:
                         print('Produto não encontrado.')
                 except ValueError:
@@ -49,7 +51,13 @@ while True:
         while True:
             op = input('C - Cadastrar categoria / L - Listar categoria / E - Editar categoria / R - Remover categoria / V - Voltar: ').lower()
             if op == 'c':
-                cadastrar_categoria()
+                categoria_id = cadastrar_categoria()
+                while True:
+                    op_cad_subcategoria = input('Deseja adicionar categorias? S/N: ').lower()
+                    if op_cad_subcategoria == 's':
+                        cadastro_categoria_subcategoria(categoria_id)
+                    elif op_cad_subcategoria == 'n':
+                        break
             elif op == 'l':
                 listar_categorias()
             elif op == 'e':

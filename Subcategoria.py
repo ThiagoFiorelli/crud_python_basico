@@ -2,8 +2,9 @@ class Subcategoria:
     __id : int
     __nome : str
 
-    def __init__(self, id : int):
+    def __init__(self, id, nome):
         self.__id = id
+        self.__nome = nome
 
     def get_id(self) -> int:
         return self.__id

@@ -1,4 +1,5 @@
 from Categoria import Categoria
+from categoria_subcategoria_controller import listar_categoria_subcategorias
 
 lista_categorias = []
 
@@ -17,6 +18,8 @@ def cadastrar_categoria(categoria : Categoria = None):
 
     if not existe:
         lista_categorias.append(categoria)
+    
+    return categoria.get_id()
 
 def listar_categorias():
     if not lista_categorias:
@@ -24,7 +27,13 @@ def listar_categorias():
     else:
         for c in lista_categorias:
             print('Categoria: ')
-            print('id: ' + str(c.get_id()) +'| Nome: ' + c.get_nome() + '\n')
+            print('id: ' + str(c.get_id()) +'| Nome: ' + c.get_nome())
+            print('Subcategorias da categoria: ')
+            lista_categoria_subcategorias = listar_categoria_subcategorias(c.get_id())
+            if not lista_categoria_subcategorias:
+                print('Esse categoria nao possui subacategorias. \n')
+            else:
+                print(str(lista_categoria_subcategorias) + '\n')
 
 def editar_categoria(cat):
     cadastrar_categoria(cat)
