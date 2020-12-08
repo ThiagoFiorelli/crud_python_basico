@@ -1,5 +1,3 @@
-from os import system
-
 class Produto:
     __id : int
     __nome : str
@@ -33,7 +31,7 @@ class Produto:
         if type(preco) == int:
             self.__preco = preco
 
-def cadastro(tipo):
+def cadastro(tipo) -> str:
     if tipo == 'nome':
         nome = input('Digite o nome do produto: ')
         return nome
@@ -50,15 +48,15 @@ def cadastro(tipo):
             print('O preço precisa ser um inteiro.')
             return cadastro('preco')
 
-def editar(prod):
+def editar(prod) -> Produto:
     prod.set_nome(cadastro('nome'))
     prod.set_descricao(cadastro('descricao'))
     prod.set_preco(cadastro('preco'))
 
-def remover(prod):
+def remover(prod) -> Produto:
     lista_produtos.remove(prod)
     
-def get_produto_by_id(id_produto):
+def get_produto_by_id(id_produto) -> int:
     for p in lista_produtos:
         if p.get_id() == id_produto:
             return p
@@ -68,7 +66,7 @@ lista_produtos = []
 id_numerador = 0
 print('Cadastro de Produto.')
 while True:
-    op = input('C - Cadastrar produto / L - Listar produto / E - Editar produto / R - Excluir produto / S - Sair: ').lower()
+    op = input('C - Cadastrar produto / L - Listar produto / E - Editar produto / R - Remover produto / S - Sair: ').lower()
     if op == 'c':
         produto = Produto()
         produto.set_nome(cadastro('nome'))
@@ -91,7 +89,7 @@ while True:
             print('O id precisa ser um numero inteiro.')     
     elif op == 'r':
         try:
-            id_produto_edicao = int(input('Digite o id do produto que deseja editar: '))
+            id_produto_edicao = int(input('Digite o id do produto que deseja remover: '))
             produto = get_produto_by_id(id_produto_edicao)
             if isinstance(produto,Produto):
                 remover(produto)
