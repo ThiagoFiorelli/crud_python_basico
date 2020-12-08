@@ -2,7 +2,7 @@ class Subcategoria:
     __id : int
     __nome : str
 
-    def __init__(self, id):
+    def __init__(self, id : int):
         self.__id = id
 
     def get_id(self) -> int:
@@ -11,6 +11,6 @@ class Subcategoria:
     def get_nome(self) -> str:
         return self.__nome
     
-    def set_nome(self, nome) -> str:
+    def set_nome(self, nome):
         if type(nome) == str:
             self.__nome = nome

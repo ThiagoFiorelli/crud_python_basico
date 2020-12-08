@@ -13,6 +13,6 @@ class Categoria:
     def get_nome(self) -> str:
         return self.__nome
     
-    def set_nome(self, nome):
+    def set_nome(self, nome : str):
         if type(nome) == str:
             self.__nome = nome

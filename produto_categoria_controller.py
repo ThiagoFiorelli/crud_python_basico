@@ -5,7 +5,7 @@ from categoria_controller import get_categoria_by_id
 
 lista_produtos_categorias = []
 
-def cadastro_produto_categoria(lista_categorias, produto_id) -> list:
+def cadastro_produto_categoria(lista_categorias : list, produto_id : int):
     lista_ids = []
     if not lista_categorias:
         print('Ainda nao existe nenhuma categoria cadastrada.')
@@ -24,10 +24,14 @@ def cadastro_produto_categoria(lista_categorias, produto_id) -> list:
         except ValueError:
             print('O id precisa ser um numero inteiro.')
 
-def listar_produto_categorias(produto_id):
+def listar_produto_categorias(produto_id : int) -> list:
     retorno = []
     for pc in lista_produtos_categorias:
         if pc.id_produto == produto_id:
             retorno.append(get_categoria_by_id(pc.id_categoria).get_nome())
-    
     return retorno
+
+def remover_produto_categoria(produto_id : int):
+    for pc in lista_produtos_categorias:
+        if pc.id_produto == produto_id:
+            lista_produtos_categorias.remove(pc)

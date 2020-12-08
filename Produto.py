@@ -15,21 +15,21 @@ class Produto:
     def get_nome(self) -> str:
         return self.__nome
     
-    def set_nome(self, nome) -> str:
+    def set_nome(self, nome : str):
         if type(nome) == str:
             self.__nome = nome
 
     def get_descricao(self) -> str:
         return self.__descricao
     
-    def set_descricao(self, descricao) -> str:
+    def set_descricao(self, descricao : str):
         if type(descricao) == str:
             self.__descricao = descricao
 
     def get_preco(self) -> int:
         return self.__preco
     
-    def set_preco(self, preco) -> int:
-        if type(preco) == int:
+    def set_preco(self, preco : float):
+        if type(preco) == float:
             self.__preco = preco
             

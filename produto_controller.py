@@ -1,5 +1,5 @@
 from Produto import Produto
-from produto_categoria_controller import listar_produto_categorias
+from produto_categoria_controller import listar_produto_categorias, remover_produto_categoria
 
 lista_produtos = []
 
@@ -9,18 +9,22 @@ def cadastro_produto_tipo(tipo):
         return nome
     
     elif tipo == 'descricao':
-        descricao = input('Digite a descrição do produto: ')
-        return descricao
+        descricao = input('Digite a descrição do produto (min 20 caracteres): ')
+        if len(descricao) < 20:
+            print('A descrição precisa ter no mínimo 20 caracteres.')
+            return cadastro_produto_tipo('descricao')
+        else:
+            return descricao
 
     elif tipo == 'preco':
         try:
-            preco = int(input('Digite o preço do produto: '))
+            preco = float(input('Digite o preço do produto: '))
             return preco
         except ValueError:
-            print('O preço precisa ser um inteiro.')
+            print('O preço precisa ser um número.')
             return cadastro_produto_tipo('preco')
 
-def cadastrar_produto(produto = None) -> int:
+def cadastrar_produto(produto : Produto = None) -> int:
     existe = True
     if not produto:
         produto = Produto()
@@ -50,13 +54,14 @@ def listar_produtos():
                 print(str(lista_produto_categorias) + '\n')
 
 
-def editar_produto(prod) -> Produto:
+def editar_produto(prod : Produto):
     cadastrar_produto(prod)
 
-def remover_produto(prod) -> Produto:
+def remover_produto(prod : Produto):
     lista_produtos.remove(prod)
+    remover_produto_categoria(prod.get_id())
     
-def get_produto_by_id(id_produto) -> int:
+def get_produto_by_id(id_produto : int) -> Produto:
     for p in lista_produtos:
         if p.get_id() == id_produto:
             return p

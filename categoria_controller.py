@@ -7,7 +7,7 @@ def cadastro_categoria_tipo(tipo):
         nome = input('Digite o nome da categoria: ')
         return nome
 
-def cadastrar_categoria(categoria = None):
+def cadastrar_categoria(categoria : Categoria = None):
     existe = True
     if not categoria:
         categoria = Categoria()
